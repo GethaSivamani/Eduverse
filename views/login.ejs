@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Eduverse</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <style>
+    body {
+      background-color: black;
+      overflow: hidden;
+    }
+
+    /* Floating "Eduverse 💡" animation */
+    .floating-text {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: bold;
+      font-family: 'Arial', sans-serif;
+      animation: floatUp 6s linear forwards, flicker 4s infinite;
+      white-space: nowrap;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 1;
+      }
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 0.8; }
+    }
+
+    /* 3D Block Text Effect */
+    .title-3d {
+      font-size: 3rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 
+        -2px -2px 0 #ff0000, 2px -2px 0 #00ff00, 
+        -2px 2px 0 #0000ff, 2px 2px 0 #ff00ff;
+      animation: neonGlow 1.5s infinite alternate ease-in-out;
+      position: absolute;
+      top: 10%; /* Pushed the heading higher */
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Neon Glow Lighting Animation */
+    @keyframes neonGlow {
+      0% { text-shadow: 0 0 5px #fff, 0 0 10px #ff0000, 0 0 15px #ff0000; }
+      100% { text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00; }
+    }
+
+  </style>
+</head>
+<body class="flex justify-center items-center min-h-screen flex-col">
+
+  <!-- 3D Neon Heading (Higher Position) -->
+  <h1 class="title-3d">Eduverse 💡</h1>
+
+  <!-- Eduverse Floating Effect -->
+  <script>
+    let maxFloatingTexts = 5; // Limit to 5 floating texts at a time
+
+    function createFloatingText() {
+      let existingTexts = document.querySelectorAll(".floating-text");
+      if (existingTexts.length >= maxFloatingTexts) return;
+
+      let text = document.createElement("div");
+      text.innerText = "Eduverse"; // Added bulb emoji
+      text.classList.add("floating-text");
+
+      // Random positioning & size
+      text.style.left = Math.random() * 100 + "vw";
+      text.style.animationDuration = Math.random() * 4 + 3 + "s";
+      text.style.fontSize = Math.random() * 2 + 1 + "rem";
+      text.style.opacity = Math.random() * 0.5 + 0.3;
+
+      document.body.appendChild(text);
+
+      // Remove after animation
+      setTimeout(() => {
+        text.remove();
+      }, 5000);
+    }
+
+    setInterval(createFloatingText, 3000); // Spawns text every 3 seconds
+  </script>
+
+  <!-- Login Form Container -->
+  <div class="bg-gray bg-opacity-10 backdrop-blur-lg shadow-2xl rounded-xl p-8 w-full max-w-md border border-white border-opacity-20 mt-20">
+    <h1 class="text-3xl font-bold text-center text-white mb-6">Welcome Back!</h1>
+
+    <form action="/login" method="POST" class="space-y-6" autocomplete="off">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    
+      <div>
+        <label for="email" class="block text-sm font-medium text-white mb-2">Email</label>
+        <input type="email" name="email" id="email" required 
+               placeholder="Enter your email"
+               autocomplete="off"
+               class="w-full p-3 border border-gray-400 rounded-lg bg-gray-800 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300">
+      </div>
+    
+      <div>
+        <label for="password" class="block text-sm font-medium text-white mb-2">Password</label>
+        <input type="password" name="password" id="password" required
+               placeholder="Enter your password"
+               autocomplete="new-password"
+               class="w-full p-3 border border-gray-400 rounded-lg bg-gray-800 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300">
+      </div>
+    
+      <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-500 transition-all duration-300 font-semibold shadow-md">Login</button>
+    </form>
+    
+
+    <p class="mt-4 text-center text-sm text-white">
+      <a href="/register" class="text-blue-400 hover:underline">Don't have an account? Register here.</a>
+    </p>
+  </div>
+
+</body>
+</html>

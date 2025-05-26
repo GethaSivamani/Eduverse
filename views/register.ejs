@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register - Eduverse</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: url('https://img.freepik.com/free-vector/background-realistic-abstract-technology-particle_23-2148431735.jpg?t=st=1744619744~exp=1744623344~hmac=5905abfcf008d156c372fcc71be88839b3a221f3eec66ea4594d28fcbb6c8773&w=1380') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .floating-text {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: bold;
+      font-family: 'Arial', sans-serif;
+      animation: floatUp 6s linear forwards, flicker 4s infinite;
+      white-space: nowrap;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 1;
+      }
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 0.8; }
+    }
+
+    .title-3d {
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 
+        -2px -2px 0 #ff0000, 2px -2px 0 #00ff00, 
+        -2px 2px 0 #0000ff, 2px 2px 0 #ff00ff;
+      animation: neonGlow 1.5s infinite alternate ease-in-out;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    @keyframes neonGlow {
+      0% { text-shadow: 0 0 5px #fff, 0 0 10px #ff0000, 0 0 15px #ff0000; }
+      100% { text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00; }
+    }
+  </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen overflow-x-hidden">
+
+  <!-- Floating Text Animation -->
+  <script>
+    let maxFloatingTexts = 5;
+    function createFloatingText() {
+      let existingTexts = document.querySelectorAll(".floating-text");
+      if (existingTexts.length >= maxFloatingTexts) return;
+
+      let text = document.createElement("div");
+      text.innerText = "Eduverse";
+      text.classList.add("floating-text");
+
+      text.style.left = Math.random() * 100 + "vw";
+      text.style.animationDuration = Math.random() * 4 + 3 + "s";
+      text.style.fontSize = Math.random() * 2 + 1 + "rem";
+      text.style.opacity = Math.random() * 0.5 + 0.3;
+
+      document.body.appendChild(text);
+      setTimeout(() => text.remove(), 6000);
+    }
+
+    setInterval(createFloatingText, 3000);
+  </script>
+
+  <!-- Neon Title -->
+  <h1 class="title-3d">Eduverse 💡</h1>
+
+  <!-- Registration Form -->
+  <div class="flex justify-center items-center px-4 mt-8 mb-8 w-full">
+    <div class="bg-white bg-opacity-10 backdrop-blur-lg shadow-2xl rounded-xl p-8 w-full max-w-md border border-white border-opacity-20">
+      <h2 class="text-3xl font-bold text-center text-white mb-6">Create Account</h2>
+
+      <form action="/register" method="POST" class="space-y-4">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+        <div>
+          <label class="block text-sm font-medium text-white mb-1" for="name">Name</label>
+          <input type="text" id="name" name="name" required placeholder="Your name"
+            class="w-full p-3 bg-gray-800 border border-gray-400 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-white mb-1" for="phone">Phone</label>
+          <input type="text" id="phone" name="phone" required placeholder="1234567890"
+            class="w-full p-3 bg-gray-800 border border-gray-400 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-white mb-1" for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="example@mail.com"
+            class="w-full p-3 bg-gray-800 border border-gray-400 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-white mb-1" for="password">Password</label>
+          <input type="password" id="password" name="password" required placeholder="Enter password"
+            class="w-full p-3 bg-gray-800 border border-gray-400 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-white mb-1" for="gender">Gender</label>
+          <select id="gender" name="gender" required
+            class="w-full p-3 bg-gray-800 border border-gray-400 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <option value="" disabled selected>Select gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-white mb-1" for="location">Location</label>
+          <input type="text" id="location" name="location" required placeholder="Your city"
+            class="w-full p-3 bg-gray-800 border border-gray-400 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+        </div>
+
+        <button type="submit"
+          class="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-500 transition duration-300 shadow-md">Register</button>
+      </form>
+
+      <p class="mt-4 text-center text-sm text-white">
+        <a href="/login" class="text-blue-400 hover:underline">Already have an account? Login here.</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

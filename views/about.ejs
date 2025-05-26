@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - Eduverse</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-100 to-purple-100 min-h-screen font-sans">
+
+  <!-- Navbar -->
+  <nav class="bg-gray-800 shadow-md">
+    <div class="max-w-screen-xl mx-auto flex justify-between items-center px-6 py-4">
+      <a href="/" class="flex items-center space-x-2 bg-white py-1 px-3 rounded-lg shadow">
+        <img src="https://images-platform.99static.com/UvWW_UabxhcKSoa-E2YXjwDHkRU=/607x286:1393x1072/500x500/top/smart/99designs-contests-attachments/131/131634/attachment_131634405" width="40px" alt="">
+        <span class="text-black font-bold text-xl">Eduverse</span>
+      </a>
+      <div class="hidden md:flex space-x-6 text-white text-lg">
+        <a href="/" class="hover:text-blue-300">Home</a>
+        <a href="/admin/quiz" class="hover:text-blue-300">Admin</a>
+        <a href="/courses" class="hover:text-blue-300">Courses</a>
+        <a href="/leaderboard" class="hover:text-blue-300">Results</a>
+        <a href="/profile" class="hover:text-blue-300">Profile</a>
+        <a href="/about" class="hover:text-blue-300">About</a>
+        <a href="/logout" class="hover:text-blue-300">Logout</a>
+      </div>
+      <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"/>
+        </svg>
+      </button>
+    </div>
+    <div id="menu" class="hidden md:hidden flex-col items-center space-y-2 py-4 bg-black-700 text-white">
+      <a href="/" class="hover:text-blue-300">Home</a>
+      <a href="/courses" class="hover:text-blue-300">Courses</a>
+      <a href="/leaderboard" class="hover:text-blue-300">Results</a>
+      <a href="/profile" class="hover:text-blue-300">Profile</a>
+      <a href="/about" class="hover:text-blue-300">About</a>
+      <a href="/logout" class="hover:text-blue-300">Logout</a>
+    </div>
+  </nav>
+
+  <!-- About Section -->
+  <section class="max-w-5xl mx-auto px-6 py-12">
+    <div class="bg-white rounded-xl shadow-xl p-8 space-y-8">
+
+      <h1 class="text-4xl font-bold text-center text-gray-800 mb-6">📚 Welcome to Eduverse!</h1>
+
+      <!-- What is Eduverse -->
+      <div class="bg-blue-50 border-l-4 border-blue-500 p-5 rounded-lg shadow">
+        <h2 class="text-2xl font-semibold text-blue-700">🧠 What is Eduverse?</h2>
+        <p class="text-gray-700 mt-3 leading-relaxed">
+          Eduverse is more than just a website—it's a growing educational ecosystem. Our mission is to create an interactive and enjoyable learning space for students, job seekers, and knowledge enthusiasts. We provide a curated selection of quizzes on various subjects ranging from aptitude and reasoning to technical concepts and general knowledge.
+          <br><br>
+          Each quiz is designed to be engaging, challenging, and helpful in building problem-solving skills. Whether you're preparing for an exam or just love learning, Eduverse is your companion in self-improvement.
+        </p>
+      </div>
+
+      <!-- Free Courses -->
+      <div class="bg-purple-50 border-l-4 border-purple-500 p-5 rounded-lg shadow">
+        <h2 class="text-2xl font-semibold text-purple-700">🎓 Best Free Courses</h2>
+        <p class="text-gray-700 mt-3 leading-relaxed">
+          One of Eduverse's standout features is its handpicked collection of free courses. We continuously scout top learning platforms like Coursera, Udemy, YouTube, and edX to find the most valuable content—so you don't have to.
+          <br><br>
+          Each course listed is selected based on quality, content depth, instructor reputation, and user reviews. Our goal is to make high-quality education accessible to everyone, regardless of their background or financial status.
+        </p>
+      </div>
+
+      <!-- Leaderboard -->
+      <div class="bg-green-50 border-l-4 border-green-500 p-5 rounded-lg shadow">
+        <h2 class="text-2xl font-semibold text-green-700">🏆 Leaderboard & Accuracy Tracking</h2>
+        <p class="text-gray-700 mt-3 leading-relaxed">
+          We believe that learning is more effective when it's competitive and transparent. Eduverse features a live leaderboard where users can track their performance, accuracy percentage, and compare their progress with others.
+          <br><br>
+          This not only builds motivation but also fosters a spirit of healthy competition. Whether you're a casual learner or a hardcore quiz taker, our leaderboard encourages you to keep pushing your limits and achieve your best.
+        </p>
+      </div>
+
+      <!-- Why Eduverse -->
+      <div class="bg-yellow-50 border-l-4 border-yellow-500 p-5 rounded-lg shadow">
+        <h2 class="text-2xl font-semibold text-yellow-700">🚀 Why Choose Eduverse?</h2>
+        <p class="text-gray-700 mt-3 leading-relaxed">
+          Eduverse is a community-first platform built with simplicity, passion, and purpose. We constantly upgrade our content and features to match the needs of today’s learners. Whether you're trying to sharpen your skills, explore new topics, or track your learning journey, Eduverse provides the perfect environment.
+          <br><br>
+          Our future roadmap includes adding AI-powered recommendations, progress dashboards, and personalized study plans to make learning smarter and more effective.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById('menu-toggle').addEventListener('click', function () {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
